@@ -3,7 +3,8 @@ import './App.css'
 import SearchIcon from './search.svg'
 import MovieCard from './MovieCard';
 
-const apiUrl = 'http://www.omdbapi.com/?i=tt3896198&apikey=6075ddc'
+const apikey = process.env.REACT_APP_API_KEY;
+const apiUrl = `http://www.omdbapi.com/?i=tt3896198&apikey=${apikey}`;
 const App = () => {
 
 
