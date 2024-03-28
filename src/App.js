@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import './App.css'
+import SearchIcon from './search.svg'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const apiUrl = 'http://www.omdbapi.com/?i=tt3896198&apikey=6075ddc'
+const App = () => {
+
+    const searchMovie = async (title) => {
+        const response = await fetch(`${apiUrl}&s=${title}`);
+        const data = await response.json();
+        console.log(data.Search);
+    };
+
+    useEffect(() => {
+        searchMovie('Shrek');
+    }, []);
+
+    return(
+        <div className='app'>
+            <h1>Softlife MovieLand</h1>
+            
+            <div className='search'>
+                <input type="text" />
+            </div>
+        </div>
+
+    );
 }
 
 export default App;
